@@ -1,0 +1,8 @@
+services:
+  sql:
+    build: sql
+    image: sql
+    ports:
+      - "5432:5432"
+    env_file:
+      - sql/sql.env
