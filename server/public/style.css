@@ -1,0 +1,39 @@
+#sidebar {
+    width: 20%;
+    position: fixed;
+    height: 100%;
+    border-right: 1px solid rgb(255, 255, 255);
+}
+
+nav {
+    text-align: center;
+    padding-top: 100px;
+}
+
+@media (max-width: 568px) {
+    #sidebar {
+      display: none;
+    }
+}
+
+/* #search {
+    background: var(--text-light);
+} */
+
+:root {
+    color-scheme: dark;
+    --bg: #212121;
+    --accent-bg: #2b2b2b;
+    --text: #dcdcdc;
+    --text-light: #ababab;
+    --border: #666;
+    --accent: #00e1ff;
+    --code: #f06292;
+    --preformatted: #ccc;
+    --disabled: #111;
+  }
+  /* Add a bit of transparency so light media isn't so glaring in dark mode */
+  img,
+  video {
+    opacity: 0.8;
+  }
