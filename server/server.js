@@ -1,16 +1,20 @@
-const http = require('http')
+const Router = require('express-promise-router')
+const { Pool } = require('pg')
 
-const hostname = '127.0.0.1'
-const port = 3000
+const pool = new Pool()
 
-const { hw } = require('./hello')
+const express = require('express')
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200
-  res.setHeader('Content-Type', 'text/plain')
-  res.end(hw())
+const app = express();
+const router = Router();
+app.use(router);
+
+router.get('/id', async (req, res) => {
+    const { id } = req.params
+    const { rows } = await pool.query('SELECT path FROM exercise;')
+    res.send(rows[0])
 })
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`)
+app.listen(3000, () => {
+    console.log(`Example app listening on port`)
 })

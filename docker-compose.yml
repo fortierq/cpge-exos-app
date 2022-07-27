@@ -1,8 +1,24 @@
 services:
-  sql:
-    build: sql
-    image: sql
+  node:
+    image: node
+    command: npm start
+    working_dir: /home/node/app
     ports:
-      - "5432:5432"
+      - 3000:3000
+    links:
+      - db
+    volumes:
+      - ./server/:/home/node/app
     env_file:
-      - sql/sql.env
+      - db.env
+    environment:
+      PGHOST: db
+
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    env_file:
+      - db.env
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
