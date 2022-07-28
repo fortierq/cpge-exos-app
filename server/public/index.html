@@ -16,39 +16,24 @@
 <body>
     <h1>Exercices d'informatique</h1>
     
-    <center><div class="side-by-side">
-        <div>
-    <select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Sujet" id="saubject">
-      </select></div>
-      
-    <div><select class="chosen-select right" tabindex="-1" multiple="" data-placeholder="Sujet" id="subject">
-    </select></div>
-    </div></center>
-      
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Sujet</th>
-                <th>Structure de donnée</th>
-                <th>Algorithme</th>
-                <th>Langage</th>
-                <th>Classe</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <!-- <td><select id="subject" 
-                class="js-example-basic-multiple" multiple="multiple"><option>Tous</option></select></td> -->
-                <td><select id="ds" data-placeholder="Sujet" class="js-example-basic-multiple" multiple="multiple"><option>Tous</option></select></td>
-                <td><select id="algo" class="js-example-basic-multiple" multiple="multiple"><option>Tous</option></select></td>
-                <td><select id="lang" class="js-example-basic-multiple" multiple="multiple"><option>Tous</option></select></td>
-                <td><select id="class" class="js-example-basic-multiple" multiple="multiple"><option>Tous</option></select></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="search">
+    <div class="row">
+        <div class="column"><select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Sujet" id="subject"></select></div>
+        <div class="column"><select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Structure de données" id="ds"></select></div>
+        <div class="column"><select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Algorithme" id="algo"></select></div>
+    </div>
+    <div class="row">
+        <div class="column"><select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Langage" id="language"></select></div>
+        <div class="column"><select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Classe" id="class"></select></div>
+        <label class="container">
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>Corrigé
+        </label>
+    </div>
 
     <center><button id="search">Chercher</button></center>
-    
+    </div>
+
     <div id="exercises"></div>
 
     <script src="index.js"></script>

@@ -12,6 +12,12 @@ app.get('/search', async (req, res) => {
     res.send(rows)
 })
 
+app.get('/exercise', async (req, res) => {
+    const { rows } = await pool.query(`SELECT * FROM exercise WHERE path='${req.query.path}';`)
+    console.log(rows)
+    res.send(rows)
+})
+
 app.get('/subjects', async (req, res) => {
     const { rows } = await pool.query('SELECT DISTINCT name FROM subject;')
     res.send(rows)
