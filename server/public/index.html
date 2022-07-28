@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" href="chosen.min.css">
-    <script src="chosen.jquery.min.js"></script>   
+    <script src="chosen.jquery.min.js"></script>
     <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>     -->
     <link rel="stylesheet" href="style.css">
@@ -15,28 +16,34 @@
 
 <body>
     <h1>Exercices d'informatique</h1>
-    
-    <div class="search">
-    <div class="row">
-        <div class="column"><select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Sujet" id="subject"></select></div>
-        <div class="column"><select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Structure de données" id="ds"></select></div>
-        <div class="column"><select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Algorithme" id="algo"></select></div>
-    </div>
-    <div class="row">
-        <div class="column"><select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Langage" id="language"></select></div>
-        <div class="column"><select class="chosen-select left" tabindex="-1" multiple="" data-placeholder="Classe" id="class"></select></div>
-        <label class="container">
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>Corrigé
-        </label>
-    </div>
 
-    <center><button id="search">Chercher</button></center>
+    <div class="search">
+        <div class="columns is-centered">
+            <div class="column"><select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Sujet"
+                    id="subject"></select></div>
+            <div class="column"><select class="chosen-select" tabindex="-1" multiple=""
+                    data-placeholder="Structure de données" id="ds"></select></div>
+            <div class="column"><select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Algorithme"
+                    id="algo"></select></div>
+        </div>
+        <div class="columns is-centered">
+            <div class="column"><select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Langage"
+                    id="language"></select></div>
+            <div class="column"><select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Classe"
+                    id="class"></select></div>
+            <div class="column"><label>
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>Corrigé
+                </label></div>
+        </div>
+
+        <center><button id="search" class="button is-primary">Chercher</button></center>
     </div>
 
     <div id="exercises"></div>
 
     <script src="index.js"></script>
+
 </body>
 
 </html>

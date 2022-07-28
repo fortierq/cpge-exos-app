@@ -55,36 +55,36 @@ select {
     border-color: #f0c862;
 }
 
-.select2-selection__choice__display {
-    color: black;
-}
-
 select {
     width: 90%;
-}
-
-.column {
-    float: left;
-    width: 33.33%;
-}
-
-.chosen-container {
     margin-left: auto;
     margin-right: auto;
 }
 
+/* .column {
+    float: left;
+    width: 33.33%;
+} */
+
+.chosen-container {
+    margin: 10px;
+}
+
+h1 {
+    margin: 15px;
+}
 /* Clear floats after the columns */
-.row:after {
+/* .row:after {
     content: "";
     display: table;
     clear: both;
-}
+} */
 
-.row {
+/* .row {
     margin: .5rem;
-}
+} */
 
-.container {
+label {
     font-size: 1rem;
 }
 
