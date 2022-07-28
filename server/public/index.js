@@ -1,8 +1,8 @@
-const url = "https://github.com/fortierq/cpge-exos-info/raw/master/exos"
+const url = "https://github.com/fortierq/exos/raw/main/exos"
+const server = "http://localhost:3000"
 
 $(document).ready(_ => {
-    
-    fetch('http://localhost:3000/subjects')
+    fetch(`${server}/subjects`)
     .then((response) => response.json())
     .then((data) => {
         for (const e of data) {
@@ -18,20 +18,23 @@ $(document).ready(_ => {
         console.log(`exos: `);
         const subject = $('#subject').find(":selected").text()
         console.log(subject)
-        fetch(`http://localhost:3000/search?subject=${subject}`)
+        fetch(`${server}/search?subject=${subject}`)
             .then((response) => response.json())
             .then((data) => {
                 $('#exercises').empty();
                 let exos = "";
                 for (const e of data) {
-                    path = e.exercise_path;
-                    const file = `${url}/${path}/${path.substring(path.lastIndexOf('/') + 1)}.png`
-                    exos += `<details>
-                        <summary>Exercice ${path}</summary>
-                        <img src="${file}" style="background-color:white;">
-                        </details>`
-                    // $('body').append(`<object data=${file} type="application/pdf">\n<iframe src=https://docs.google.com/viewer?url=${file}&embedded=true></iframe>\n</object>`)
-                        // `<iframe src=https://mozilla.github.io/pdf.js/web/viewer.html?file=${file}#zoom=page-fit&pagemode=none height=500 width=100% allowfullscreen></iframe>`)
+                    const path = e.exercise_path;
+                    fetch(`${server}/exercise?path=${path}`)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log(data)
+                            const file = `${url}/${path}/${path.substring(path.lastIndexOf('/') + 1)}.png`
+                            exos += `<details>
+                                <summary>${data[0].name}</summary>
+                                <img src="${file}" style="background-color:white;">
+                                </details>`
+                        })
                 }
                 $("#exercises").html(exos);
                 console.log(`exos: ${exos}`);
