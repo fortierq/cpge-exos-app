@@ -4,18 +4,11 @@ const app = express()
 const router = Router()
 app.use(router)
 
-const cors = require('cors');
-app.use(cors({
-    origin: 'https://mozilla.github.io',
-    methods: 'GET,POST,PATCH,DELETE,OPTIONS',
-    optionsSuccessStatus: 200,
-}));
-
 const { Pool } = require('pg')
 const pool = new Pool()
 
 app.get('/search', async (req, res) => {
-    const { rows } = await pool.query("SELECT exercise_path FROM exercise_subject WHERE subject_name='graph';")
+    const { rows } = await pool.query(`SELECT exercise_path FROM exercise_subject WHERE subject_name='${req.query.subject}';`)
     res.send(rows)
 })
 
@@ -24,9 +17,9 @@ app.get('/subjects', async (req, res) => {
     res.send(rows)
 })
 
-app.get('/id', async (req, res) => {
-    const { rows } = await pool.query('SELECT path FROM exercise;')
-    res.send(rows[0])
+app.get('/ds', async (req, res) => {
+    const { rows } = await pool.query('SELECT DISTINCT name FROM ds;')
+    res.send(rows)
 })
 
 app.listen(3000, () => {
