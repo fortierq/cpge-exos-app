@@ -1,12 +1,24 @@
 const url = "https://github.com/fortierq/exos/raw/main/exos"
-const server = "http://localhost:3000"
+const server = "http://127.0.0.1:3000"
+const attributes = ["ds", "subject", "language", "algorithm", "class"]
 
 async function search() {
     console.log(`exos: `);
-    const subject = $('#subject').find(":selected").text()
-    console.log(subject)
-    const ans = await fetch(`${server}/search?subject=${subject}`)
+    let att = {}
+    for (const a of attributes) {
+        att[a] = $(`#${a}`).val()
+    }
+    const ans = await fetch(`${server}/search`, {
+        "method": "POST",
+        "credentials": 'same-origin',
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": JSON.stringify(att)
+    })
+    // const ans = await fetch(`${server}/search?subjects=${subjects.join()}`)
     const data = await ans.json()
+    console.log("data " + data)
     $('#exercises').empty();
     let exos = "";
     for (const e of data) {
@@ -25,20 +37,22 @@ async function search() {
     return false;
 }
 
-async function subjects() {
-    const ans = await fetch(`${server}/subjects`)
-    const data = await ans.json()
-    for (const e of data) {
-        $('#subject').append($('<option>', {
-            value: e.name,
-            text: e.name
-        }));
+async function fill_select() {
+    for (const a of attributes) {
+        const ans = await fetch(`${server}/values/${a}`)
+        const data = await ans.json()
+        for (const e of data) {
+            $(`#${a}`).append($('<option>', {
+                value: e.name,
+                text: e.name
+            }));
+        }
     }
-    $(".chosen-select").chosen();
+    $(".chosen-select").chosen({width: "90%"}); 
 }
 
 $(document).ready(_ => {
-    subjects();
+    fill_select();
 
     $("#search").click(search);
 });
