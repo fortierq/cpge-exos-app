@@ -6,8 +6,6 @@ const router = Router()
 app.use(router)
 var jsonParser = bodyParser.json()
 
-
-const attributes = ["ds", "subject", "language", "algorithm", "class"]
 const { Pool } = require('pg')
 const pool = new Pool()
 
@@ -27,7 +25,6 @@ app.post('/search', jsonParser, async (req, res) => {
 
 app.get('/exercise', async (req, res) => {
     const { rows } = await pool.query(`SELECT * FROM exercise WHERE path='${req.query.path}';`)
-    console.log(rows)
     res.send(rows)
 })
 
