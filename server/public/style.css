@@ -13,66 +13,24 @@
     --disabled:#efefef
 }
 
-#subject,
-#search,
-th,
-td,
 h1 {
     text-align: center;
-    border-width: 1px;
+    margin: .5em;
 }
-
-th,
-tr,
-thead {
-    border-width: 0px;
-    border-bottom: 0px;
-    border-right-width: 1px;
-}
-
-td {
-    width: 20%;
-    border-top-width: 0px;
-    border-right-width: 1px;
-    border-left-width: 0px;
-    border-bottom-width: 0px;
-}
-
-table {
-    margin: 0;
-    border-width: 1px;
-    border-color: #62e6f0;
-}
-
-th {
-    padding: 0;
-    font-weight: normal;
-}
-
-.chosen-container {
-    margin: 10px;
-}
-
-h1 {
-    margin: 15px;
-}
-/* Clear floats after the columns */
-/* .row:after {
-    content: "";
-    display: table;
-    clear: both;
-} */
-
-/* .row {
-    margin: .5rem;
-} */
 
 label {
-    font-size: 1rem;
+    font-size: 1em;
+    margin: 0 auto;
+    width: 50%;
 }
 
-.search {
+.form {
     border: 1px solid var(--border);
-    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 5px;
     background-color: var(--accent-bg);
+}
+
+#search {
+    margin-bottom: 0;
 }

@@ -17,7 +17,7 @@
 <body>
     <h1>Exercices d'informatique</h1>
 
-    <div class="search">
+    <div class="form">
         <div class="columns is-centered">
             <div class="column"><select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Sujet"
                     id="subject"></select></div>
@@ -28,13 +28,17 @@
         </div>
         <div class="columns is-centered">
             <div class="column"><select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Langage"
-                    id="language"></select></div>
-            <div class="column"><select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Classe"
-                    id="class"></select></div>
-            <div class="column"><label>
+                    id="language"></select>
+            </div>
+            <div class="column">
+                <select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Classe" id="class"></select>
+                </div>
+            <div class="column">
+                <label >
                     <input type="checkbox" checked="checked">
                     <span class="checkmark"></span>Corrigé
-                </label></div>
+                </label>
+            </div>
         </div>
 
         <center><button id="search">Chercher</button></center>

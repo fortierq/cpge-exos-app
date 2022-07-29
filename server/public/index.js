@@ -48,7 +48,7 @@ async function fill_select() {
             }));
         }
     }
-    $(".chosen-select").chosen({width: "90%"}); 
+    $(".chosen-select").chosen({width: "100%"}); 
 }
 
 $(document).ready(_ => {
