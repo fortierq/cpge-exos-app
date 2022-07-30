@@ -29,6 +29,14 @@ async function search() {
         const file = `${url}/${path}/${path.substring(path.lastIndexOf('/') + 1)}.png`
         exos += `<details>
                 <summary>${data[0].name}</summary>
+                <div class="tabs">
+  <ul>
+    <li class="is-active"><a>Pictures</a></li>
+    <li><a>Music</a></li>
+    <li><a>Videos</a></li>
+    <li><a>Documents</a></li>
+  </ul>
+</div>
                 <img src="${file}" style="background-color:white;">
                 </details>`
     }
@@ -38,14 +46,12 @@ async function search() {
 }
 
 async function fill_select() {
+    const ans = await fetch(`${server}/attributes`)
+    const data = await ans.json()
     for (const a of attributes) {
-        const ans = await fetch(`${server}/values/${a}`)
-        const data = await ans.json()
-        for (const e of data) {
-            $(`#${a}`).append($('<option>', {
-                value: e.name,
-                text: e.name
-            }));
+        const select = $(`#${a}`)
+        for (const d of data[a]) {
+            select.append(`<option value="${d.name}">${d.name}</option>`)
         }
     }
     $(".chosen-select").chosen({width: "100%"}); 
