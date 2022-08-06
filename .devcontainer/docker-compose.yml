@@ -1,16 +1,25 @@
-version: '3.8'
-
 services:
-  app:
-    image: node:latest
-    volumes:
-      - ..:/workspace:cached
+  node:
+    build: .
     command: sleep infinity
-    network_mode: service:db
+    working_dir: /home/node/app
+    ports:
+      - 3000:3000
+    links:
+      - db
     env_file:
-      - ../sql.env
+      - ../db.env
+    environment:
+      PGHOST: db
+    volumes:
+      - ../:/workspace/
 
   db:
-    image: qfortier/cpge-exos-sql
+    image: postgres
+    ports:
+      - 5432:5432
     env_file:
-      - ../sql.env
+      - ../db.env
+    volumes:
+      - ../sql:/docker-entrypoint-initdb.d
+      # - ./data:/var/lib/postgresql/data

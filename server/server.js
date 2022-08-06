@@ -49,7 +49,7 @@ app.get('/values/:table', async (req, res) => {
 })
 
 app.listen(3000, () => {
-    console.log(`Example app listening on port`)
+    console.log(`Listening...`)
 })
 
 app.use(express.static('public'))

@@ -1,21 +1,28 @@
 :root {
-    --sans-font:-apple-system,BlinkMacSystemFont,"Avenir Next",Avenir,"Nimbus Sans L",Roboto,"Noto Sans","Segoe UI",Arial,Helvetica,"Helvetica Neue",sans-serif;
-    --mono-font:Consolas,Menlo,Monaco,"Andale Mono","Ubuntu Mono",monospace;
-    --bg:#fff;
-    --accent-bg:#f6f7fc;
-    --text:#212121;
-    --text-light:#585858;
-    --border:#d8dae1;
-    --accent:#0d47a1;
-    --code:#d81b60;
-    --preformatted:#444;
-    --marked:#ffdd33;
-    --disabled:#efefef
+    --sans-font: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica, "Helvetica Neue", sans-serif;
+    --mono-font: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    --bg: #f2f6fa;
+    --accent-bg: white;
+    --text: #212121;
+    --text-light: #585858;
+    --border: #d8dae1;
+    --accent: #0d47a1;
+    --code: #d81b60;
+    --preformatted: #444;
+    --marked: #ffdd33;
+    --disabled: #efefef
+}
+
+body {
+    grid-template-columns: 1fr min(45rem, 90%) 1fr;
+}
+
+html {
+    background-color: var(--bg);
 }
 
 h1 {
     text-align: center;
-    margin: .5em;
 }
 
 label {
@@ -30,6 +37,8 @@ label {
     border-radius: 5px;
     background-color: var(--accent-bg);
     margin-bottom: 1em;
+    margin-top: 1em;
+    /* padding-top: 0%; */
 }
 
 #search {
@@ -46,10 +55,10 @@ details {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-  }
-  
-  /* Style the buttons inside the tab */
-  .tab button {
+}
+
+/* Style the buttons inside the tab */
+.tab button {
     background-color: inherit;
     float: left;
     border: none;
@@ -59,27 +68,22 @@ details {
     transition: 0.3s;
     font-size: 17px;
     color: var(--text);
-  }
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
     background-color: #ddd;
-  }
-  
-  /* Create an active/current tablink class */
-  .tab button.active {
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
     background-color: #ccc;
-  }
-  
-  /* Style the tab content */
-  .tabcontent {
+}
+
+/* Style the tab content */
+.tabcontent {
     display: none;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-  }
-  
-  viewer-pdf-toolbar {
-    display: none !important;
-  }
-  
+}
