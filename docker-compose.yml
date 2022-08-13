@@ -1,13 +1,13 @@
 services:
   node:
     image: qfortier/exos
-    working_dir: /home/node/app
+    working_dir: /app
     ports:
       - 8080:8080
     links:
       - db
     volumes:
-      - ./server/:/home/node/app
+      - ./server/:/app
     env_file:
       - db.env
     environment:

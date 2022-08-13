@@ -7,13 +7,10 @@ class Root extends React.Component {
         const selects_dict = await ans.json();
         var selects_array = [];
         for (const [k, v] of Object.entries(selects_dict)) {
-            console.log("V");
-            console.log(v);
             let t = [];
-            for (const e of v) {
-                t.push({value: e.name, label: e.name});
+            for (const { name } of v) {
+                t.push({value: name, label: name});
             }
-            console.log(t);
             selects_array.push(
             <Select 
                 options={t} placeholder={k} 
@@ -36,8 +33,7 @@ class Root extends React.Component {
         return (
             <div class='form'>
                 <h1>Exercices d'informatique</h1> <hr />
-
-                    {this.state.selects}
+                        {this.state.selects}
 
                 {/* <div class='columns is-centered'>
                     <div class='column'><select class='chosen-select' tabindex='-1' multiple='' data-placeholder='Sujet'
