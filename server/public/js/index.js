@@ -1,6 +1,3 @@
-const url = "https://github.com/fortierq/exos/raw/main/exos"
-const server = "http://127.0.0.1:3000"
-const attributes = ["ds", "subject", "language", "algorithm", "class"]
 
 async function fill_select() {
     const ans = await fetch(`${server}/attributes`)

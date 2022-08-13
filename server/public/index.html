@@ -5,52 +5,28 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="chosen.min.css">
-    <script src="chosen.jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/emotion@9.2.12/dist/emotion.umd.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.5.10/prop-types.min.js"></script>
+    <script src="https://unpkg.com/react-input-autosize@2.2.1/dist/react-input-autosize.min.js"></script>
+    <script src="https://unpkg.com/react-select@2.1.2/dist/react-select.min.js"></script>
 
     <title>Exercices d'informatique</title>
 </head>
 
 <body>
-    <div class="form">
-        <h1>Exercices d'informatique</h1>
-        <hr>
-        <div class="columns is-centered">
-            <div class="column"><select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Sujet"
-                    id="subject"></select></div>
-            <div class="column"><select class="chosen-select" tabindex="-1" multiple=""
-                    data-placeholder="Structure de données" id="ds"></select></div>
-            <div class="column"><select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Algorithme"
-                    id="algo"></select></div>
-        </div>
-        <div class="columns is-centered">
-            <div class="column"><select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Langage"
-                    id="language"></select>
-            </div>
-            <div class="column">
-                <select class="chosen-select" tabindex="-1" multiple="" data-placeholder="Classe" id="class"></select>
-                </div>
-            <div class="column">
-                <label class="checkbox">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>Corrigé
-                </label>
-            </div>
-        </div>
-
     <div id="root"></div>
-    <center><button id="search">Chercher</button></center>
-    </div>
+    
     <div id="exercises"></div>
 
-    <script src="./index.js"></script>
-    <script src="./button.js" type="text/jsx"></script>
+    <script src="js/search.js" type="text/jsx"></script>
+    <!-- <script src="js/select.js" type="text/jsx"></script> -->
+    <script src="js/root.js" type="text/jsx"></script>
 </body>
 
 </html>

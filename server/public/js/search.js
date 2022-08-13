@@ -1,3 +1,7 @@
+const url = "https://github.com/fortierq/exos/raw/main/exos"
+const server = "http://127.0.0.1:3000"
+const attributes = ["ds", "subject", "language", "algorithm", "class"]
+
 class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -43,14 +47,13 @@ class Search extends React.Component {
             const data = await ans.json()
             const id_exo = path.replace('/', '_')
             const file = `${url}/${path}/${path.substring(path.lastIndexOf('/') + 1)}`
-            let tabs = ''
-            tabs = `
+            let tabs = (
             <div class="tabs">
             <ul>
-                <li id="${id_exo}_enonce" class="is-active" onClick="this.exo_show('${path}')"><a>Énoncé</a></li>
+                <li id="${id_exo}_enonce" class="is-active" onClick={this.exo_show(path)}><a>Énoncé</a></li>
                 <li id="${id_exo}_cor" onClick="this.exo_show('${path}', true)"><a>Solution</a></li>
             </ul>
-            </div>`
+            </div>)
             exos += `
         <details>
             <summary>${data[0].name}</summary>
@@ -67,6 +70,3 @@ class Search extends React.Component {
         );
     }
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Search />);

@@ -40,7 +40,6 @@ app.get('/attributes', async (req, res) => {
         const { rows } = await pool.query(`SELECT name FROM ${a}`)
         data[a] = rows
     }
-    console.log(data)
     res.send(data)
 })
 
@@ -49,7 +48,7 @@ app.get('/values/:table', async (req, res) => {
     res.send(rows)
 })
 
-app.listen(3000, () => {
+app.listen(8080, () => {
     console.log(`Listening...`)
 })
 
