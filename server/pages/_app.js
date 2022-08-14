@@ -6,7 +6,6 @@ import Selects from '../components/selects'
 
 const url = "https://github.com/fortierq/exos/raw/main/exos"
 const server = "http://127.0.0.1:3000"
-const attributes = ["ds", "subject", "language", "algorithm", "class"]
 
 export default () => {
     const [attributes, setAttributes] = useState({})
@@ -14,6 +13,7 @@ export default () => {
     return (
         <div className='form'>
             <h1>Exercices d'informatique</h1> <hr />
+
             <Columns>
                 <Columns.Column size="one-third">
                     <Selects setAttributes={setAttributes} />
@@ -21,6 +21,7 @@ export default () => {
                         <Search attributes={attributes} />
                     </div>
                 </Columns.Column>
+
                 <Columns.Column>
 
                 </Columns.Column>

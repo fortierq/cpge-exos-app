@@ -2,7 +2,8 @@ import Select from 'react-select'
 import { useState, useEffect } from 'react'
 
 export default ({ setAttributes }) => {
-    const [selects, setSelects] = useState([])
+    const [selects, setSelects] = useState({})
+    const [options, setOptions] = useState([])
 
     function change(attribute) {
         return value => {
@@ -16,29 +17,27 @@ export default ({ setAttributes }) => {
         async function fetchData() {
             const ans = await fetch(`api/attributes`)
             const selects_dict = await ans.json()
-            var selects_array = []
-            for (const [k, v] of Object.entries(selects_dict)) {
-                let t = []
-                for (const { name } of v) {
-                    t.push({ value: name, label: name })
-                }
-                selects_array.push(
-                    <Select 
-                        onChange={change(k)}
-                        options={t}
-                        placeholder={k} 
-                        isMulti 
-                    />
-                )
-            }
-            setSelects(selects_array)
+            setSelects(selects_dict)
         }
         fetchData()
     }, [])
 
     return (
         <div>
-            {selects}
+            {Object.entries(selects).map(([k, v]) => {
+                let t = []
+                for (const { name } of v) {
+                    t.push({ value: name, label: name })
+                }
+                return (
+                    <Select
+                        onChange={change(k)}
+                        options={t}
+                        placeholder={k}
+                        isMulti
+                    />
+                )
+            })}
         </div>
     )
 }
