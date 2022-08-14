@@ -1,6 +1,4 @@
-const url = "https://github.com/fortierq/exos/raw/main/exos"
-const server = "http://127.0.0.1:8080"
-const attributes = ["ds", "subject", "language", "algorithm", "class"]
+
 
 class Search extends React.Component {
     constructor(props) {

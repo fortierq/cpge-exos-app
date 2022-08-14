@@ -48,7 +48,7 @@ app.get('/values/:table', async (req, res) => {
     res.send(rows)
 })
 
-app.listen(8080, () => {
+app.listen(3000, () => {
     console.log(`Listening...`)
 })
 
