@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 
 export default ({ setAttributes }) => {
     const [selects, setSelects] = useState({})
-    const [options, setOptions] = useState([])
 
     function change(attribute) {
         return value => {
@@ -25,14 +24,10 @@ export default ({ setAttributes }) => {
     return (
         <div>
             {Object.entries(selects).map(([k, v]) => {
-                let t = []
-                for (const { name } of v) {
-                    t.push({ value: name, label: name })
-                }
                 return (
                     <Select
                         onChange={change(k)}
-                        options={t}
+                        options={v.map(({ name }) => ({ value: name, label: name }))}
                         placeholder={k}
                         isMulti
                     />
