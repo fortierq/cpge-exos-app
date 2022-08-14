@@ -3,7 +3,17 @@ import prisma from '../../lib/prisma'
 
 export default async function handle(req, res) {
     console.log(req.query)
-    const result = await prisma.user.findMany
+    const cond = {}
+    for (const a in req.query) {
+        console.log(a)
+        if (req.query[a] !== null) {
+        }}
+    // const result = await prisma.exercise.findMany(
+    //     {
+    //         where: {
+    //             ds: {
+                        
+    // )
 
     res.json(req.query)
 

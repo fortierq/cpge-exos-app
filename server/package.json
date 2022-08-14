@@ -13,7 +13,6 @@
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@fontsource/roboto": "^4.5.8",
-    "@mui/material": "^5.10.0",
     "@prisma/client": "^4.2.1",
     "babel-preset-react": "^6.24.1",
     "babelify": "^10.0.0",

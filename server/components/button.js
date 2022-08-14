@@ -1,7 +1,7 @@
-import Button from '@mui/material/Button';
+import { Button } from 'react-bulma-components';
 
 
-export default function Search() {
+export default ({ attributes }) => {
     // constructor(props) {
     //     super(props);
 
@@ -26,50 +26,48 @@ export default function Search() {
 
     async function search() {
         console.log("search")
-        //     let att = {}
-        //     for (const a of attributes) {
-        //         att[a] = $(`#${a}`).val()
-        //     }
-        //     const ans = await fetch(`${server}/search`, {
-        //         "method": "POST",
-        //         "credentials": 'same-origin',
-        //         "headers": {
-        //             "Content-Type": "application/json"
-        //         },
-        //         "body": JSON.stringify(att)
-        //     })
-        //     const data = await ans.json()
-        //     $('#exercises').empty()
-        //     let exos = ""
-        //     for (const e of data) {
-        //         const path = e.exercise_path;
-        //         const ans = await fetch(`${server}/exercise?path=${path}`)
-        //         const data = await ans.json()
-        //         const id_exo = path.replace('/', '_')
-        //         const file = `${url}/${path}/${path.substring(path.lastIndexOf('/') + 1)}`
-        //         let tabs = (
-        //         <div class="tabs">
-        //         <ul>
-        //             <li id="${id_exo}_enonce" class="is-active" onClick={this.exo_show(path)}><a>Énoncé</a></li>
-        //             <li id="${id_exo}_cor" onClick="this.exo_show('${path}', true)"><a>Solution</a></li>
-        //         </ul>
-        //         </div>)
-        //         exos += `
-        //     <details>
-        //         <summary>${data[0].name}</summary>
-        //         ${tabs}
-        //         <img id=${id_exo} src="${file}" style="background-color:white;">
-        //     </details>`
-        //     }
-        //     $("#exercises").html(exos);
+        console.log(attributes)
+    //     let att = {}
+    //     for (const a of attributes) {
+    //         att[a] = $(`#${a}`).val()
+    //     }
+    //     const ans = await fetch(`${server}/search`, {
+    //         "method": "POST",
+    //         "credentials": 'same-origin',
+    //         "headers": {
+    //             "Content-Type": "application/json"
+    //         },
+    //         "body": JSON.stringify(att)
+    //     })
+    //     const data = await ans.json()
+    //     $('#exercises').empty()
+    //     let exos = ""
+    //     for (const e of data) {
+    //         const path = e.exercise_path;
+    //         const ans = await fetch(`${server}/exercise?path=${path}`)
+    //         const data = await ans.json()
+    //         const id_exo = path.replace('/', '_')
+    //         const file = `${url}/${path}/${path.substring(path.lastIndexOf('/') + 1)}`
+    //         let tabs = (
+    //         <div class="tabs">
+    //         <ul>
+    //             <li id="${id_exo}_enonce" class="is-active" onClick={this.exo_show(path)}><a>Énoncé</a></li>
+    //             <li id="${id_exo}_cor" onClick="this.exo_show('${path}', true)"><a>Solution</a></li>
+    //         </ul>
+    //         </div>)
+    //         exos += `
+    //     <details>
+    //         <summary>${data[0].name}</summary>
+    //         ${tabs}
+    //         <img id=${id_exo} src="${file}" style="background-color:white;">
+    //     </details>`
+    //     }
+    //     $("#exercises").html(exos);
     }
 
     return (
         <div className='has-text-centered'>
-            <Button variant="outlined"
-                onClick={search}>
-                Chercher
-            </Button>
+            <Button color="primary" onClick={search}>Chercher</Button>
         </div>
     );
 }
