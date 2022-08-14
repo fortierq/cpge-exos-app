@@ -1,12 +1,12 @@
-import { Button } from 'react-bulma-components';
+import { Button } from 'react-bulma-components'
 
 
 export default ({ attributes }) => {
     // constructor(props) {
-    //     super(props);
+    //     super(props)
 
-    //     this.search = this.search.bind(this);
-    //     this.exo_show = this.exo_show.bind(this);
+    //     this.search = this.search.bind(this)
+    //     this.exo_show = this.exo_show.bind(this)
     // }
 
     // exo_show(path, cor = false) {
@@ -43,7 +43,7 @@ export default ({ attributes }) => {
     //     $('#exercises').empty()
     //     let exos = ""
     //     for (const e of data) {
-    //         const path = e.exercise_path;
+    //         const path = e.exercise_path
     //         const ans = await fetch(`${server}/exercise?path=${path}`)
     //         const data = await ans.json()
     //         const id_exo = path.replace('/', '_')
@@ -59,15 +59,15 @@ export default ({ attributes }) => {
     //     <details>
     //         <summary>${data[0].name}</summary>
     //         ${tabs}
-    //         <img id=${id_exo} src="${file}" style="background-color:white;">
+    //         <img id=${id_exo} src="${file}" style="background-color:white">
     //     </details>`
     //     }
-    //     $("#exercises").html(exos);
+    //     $("#exercises").html(exos)
     }
 
     return (
         <div className='has-text-centered'>
             <Button color="primary" onClick={search}>Chercher</Button>
         </div>
-    );
+    )
 }

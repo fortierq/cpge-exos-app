@@ -1,32 +1,32 @@
 class Root extends React.Component {
-    state = { selects: [] };
-    handleMultiChange = this.handleMultiChange.bind(this);
+    state = { selects: [] }
+    handleMultiChange = this.handleMultiChange.bind(this)
 
     async componentDidMount() {
-        const ans = await fetch(`${server}/attributes`);
-        const selects_dict = await ans.json();
-        var selects_array = [];
+        const ans = await fetch(`${server}/attributes`)
+        const selects_dict = await ans.json()
+        var selects_array = []
         for (const [k, v] of Object.entries(selects_dict)) {
-            let t = [];
+            let t = []
             for (const { name } of v) {
-                t.push({value: name, label: name});
+                t.push({value: name, label: name})
             }
             selects_array.push(
             <Select 
                 options={t} placeholder={k} 
                 onChange={this.handleMultiChange} 
                 isMulti
-            />);
+            />)
         }
-        this.setState({ selects: selects_array });   
+        this.setState({ selects: selects_array })   
     }
 
     handleMultiChange(option) {
         this.setState(state => {
           return {
             multiValue: option
-          };
-        });
+          }
+        })
       }    
 
     render() {
@@ -59,9 +59,9 @@ class Root extends React.Component {
                 </div> */}
                 <Search />
             </div>
-        );
+        )
     }
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Root />);
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(<Root />)

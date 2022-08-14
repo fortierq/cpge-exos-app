@@ -29,7 +29,7 @@ app.post('/search', jsonParser, async (req, res) => {
 })
 
 app.get('/exercise', async (req, res) => {
-    const { rows } = await pool.query(`SELECT * FROM exercise WHERE path='${req.query.path}';`)
+    const { rows } = await pool.query(`SELECT * FROM exercise WHERE path='${req.query.path}'`)
     res.send(rows)
 })
 
@@ -44,7 +44,7 @@ app.get('/attributes', async (req, res) => {
 })
 
 app.get('/values/:table', async (req, res) => {
-    const { rows } = await pool.query(`SELECT DISTINCT name FROM ${req.params.table};`)
+    const { rows } = await pool.query(`SELECT DISTINCT name FROM ${req.params.table}`)
     res.send(rows)
 })
 
