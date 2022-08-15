@@ -12,7 +12,7 @@ export default ({ attributes, setExos }) => {
             "body": JSON.stringify(attributes)
         })
         const data = await ans.json()
-
+        
         setExos(await Promise.all(data.map(async (e) => {
             const path = e.path.replace('/', '-')
             const ans = await fetch(`/api/exercise/${path}`)
@@ -23,7 +23,13 @@ export default ({ attributes, setExos }) => {
 
     return (
         <div className='has-text-centered'>
-            <Button variant="contained" color="success" onClick={search}>Chercher</Button>
+            <Button 
+                variant="contained" 
+                color="success" 
+                onClick={search}
+            >
+                Chercher
+            </Button>
         </div>
     )
 }
