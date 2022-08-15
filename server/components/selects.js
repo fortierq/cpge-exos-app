@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import FormGroup from '@mui/material/FormGroup';
+import Stack from '@mui/material/Stack';
 
 export default ({ attributes, setAttributes }) => {
     const [selects, setSelects] = useState({})
@@ -38,6 +39,7 @@ export default ({ attributes, setAttributes }) => {
     }, [])
 
     return (
+        <Stack spacing={2}>
             {Object.entries(selects).map(([k, v]) => {
                 let options = v.map(e => e.name)
                 let a = attributes[k]
@@ -64,5 +66,6 @@ export default ({ attributes, setAttributes }) => {
                     </Autocomplete>
                 )
             })}
+        </Stack>
     )
 }

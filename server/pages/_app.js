@@ -1,17 +1,10 @@
 import { useState } from 'react'
-import 'bulma/css/bulma.min.css'
 import '../css/style.css'
-import { Columns } from 'react-bulma-components'
 import Button from '../components/button'
 import Selects from '../components/selects'
 import Exos from '../components/exos'
 import Stack from '@mui/material/Stack';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
-const server = "http://127.0.0.1:3000"
+import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 
 export default () => {
     const [attributes, setAttributes] = useState({})
@@ -19,22 +12,22 @@ export default () => {
 
     return (
         <div className='form'>
-            <h1>Exercices d'informatique</h1> <hr />
+            <h1>Exercices d'informatique</h1> <br />
 
-            <Columns>
-                <Columns.Column size="one-third">
+            <Grid container spacing={2}>
+                <Grid md={4} xs={12}>
                     <Stack spacing={2}>
                         <Selects attributes={attributes} setAttributes={setAttributes} />
-                        <div className='has-text-centered'>
+                        <div style={{ textAlign: "center" }}>
                             <Button attributes={attributes} setExos={setExos} />
                         </div>
                     </Stack>
-                </Columns.Column>
+                </Grid>
 
-                <Columns.Column>
+                <Grid md={8} xs={12}>
                     <Exos exos={exos} />
-                </Columns.Column>
-            </Columns>
+                </Grid>
+            </Grid>
         </div>
     )
 }
