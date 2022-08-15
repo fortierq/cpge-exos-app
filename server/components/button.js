@@ -13,7 +13,7 @@ export default ({ attributes, setExos }) => {
         })
         const data = await ans.json()
         
-        setExos(await Promise.all(data.map(async (e) => {
+        setExos(await Promise.all(data.map(async e => {
             const path = e.path.replace('/', '-')
             const ans = await fetch(`/api/exercise/${path}`)
             const data = await ans.json()

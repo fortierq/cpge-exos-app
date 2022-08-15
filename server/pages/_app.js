@@ -11,7 +11,7 @@ export default () => {
     const [exos, setExos] = useState([])
 
     return (
-        <div className='form'>
+        <div>
             <h1>Exercices d'informatique</h1> <br />
 
             <Grid container spacing={2}>

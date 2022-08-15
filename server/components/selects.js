@@ -11,6 +11,13 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
+import Checkbox from '@mui/material/Checkbox';
+
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default ({ attributes, setAttributes }) => {
     const [selects, setSelects] = useState({})
@@ -39,7 +46,7 @@ export default ({ attributes, setAttributes }) => {
     }, [])
 
     return (
-        <Stack spacing={2}>
+        <Stack spacing={1.5}>
             {Object.entries(selects).map(([k, v]) => {
                 let options = v.map(e => e.name)
                 let a = attributes[k]
@@ -47,6 +54,18 @@ export default ({ attributes, setAttributes }) => {
                 return (
 
                     <Autocomplete
+                        disableCloseOnSelect
+                        renderOption={(props, option, { selected }) => (
+                            <li {...props}>
+                              <Checkbox
+                                icon={icon}
+                                checkedIcon={checkedIcon}
+                                style={{ marginRight: 8 }}
+                                checked={selected}
+                              />
+                              {option}
+                            </li>
+                          )}
                         labelId={`label_${k}`}
                         options={options}
                         onChange={change(k)}
