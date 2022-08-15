@@ -1,8 +1,10 @@
 export default ({ exos }) => {
+    console.log(exos)
     return (
         <div>
-            {exos.map(exo => 1)}
+            {exos.map(exo =>
+                exo.name
+            )}
         </div>
     )
 }
-const cond = req.query
