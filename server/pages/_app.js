@@ -5,6 +5,7 @@ import { Columns } from 'react-bulma-components'
 import Button from '../components/button'
 import Selects from '../components/selects'
 import Exos from '../components/exos'
+import Stack from '@mui/material/Stack';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -22,10 +23,12 @@ export default () => {
 
             <Columns>
                 <Columns.Column size="one-third">
-                    <Selects attributes={attributes} setAttributes={setAttributes} />
-                    <div className='has-text-centered'>
-                        <Button attributes={attributes} setExos={setExos} />
-                    </div>
+                    <Stack spacing={2}>
+                        <Selects attributes={attributes} setAttributes={setAttributes} />
+                        <div className='has-text-centered'>
+                            <Button attributes={attributes} setExos={setExos} />
+                        </div>
+                    </Stack>
                 </Columns.Column>
 
                 <Columns.Column>

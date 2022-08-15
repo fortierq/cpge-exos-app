@@ -7,14 +7,23 @@ import Select from '@mui/material/Select';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+import FormGroup from '@mui/material/FormGroup';
 
 export default ({ attributes, setAttributes }) => {
     const [selects, setSelects] = useState({})
 
     function change(attribute) {
-        return ({ target: { value } }) => {
+        return (event, value) => {
+            console.log("CHANGE")
+            console.log(value)
             setAttributes(att => {
-                return { ...att, [attribute]: value }
+                let a = { ...att, [attribute]: value }
+                if (value.length == 0) {
+                    delete a[attribute]
+                }
+                return a
             })
         }
     }
@@ -29,34 +38,31 @@ export default ({ attributes, setAttributes }) => {
     }, [])
 
     return (
-        <div>
             {Object.entries(selects).map(([k, v]) => {
+                let options = v.map(e => e.name)
                 let a = attributes[k]
-                let value = (a === undefined ? [] : (typeof a === 'string' ? [a] : a))
+                let values = (a === undefined ? [] : (typeof a === 'string' ? [a] : a))
                 return (
-                    <FormControl sx={{ m: 1, width: "100%" }}>
-                        <InputLabel id={`label_${k}`}>{k}</InputLabel>
-                        <Select
-                            labelId={`label_${k}`}
-                            value={value}
-                            input={<OutlinedInput label={k} />}
-                            onChange={change(k)}
-                            multiple
-                            renderValue={(selected) => (
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                                    {selected.map((value) => (
-                                        <Chip key={value} label={value} />
-                                    ))}
-                                </Box>
-                            )}
-                        >
-                            {v.map(({ name }) => {
-                                return <MenuItem value={name}>{name}</MenuItem>
-                            })}
-                        </Select>
-                    </FormControl>
+
+                    <Autocomplete
+                        labelId={`label_${k}`}
+                        options={options}
+                        onChange={change(k)}
+                        multiple
+                        renderInput={(params) => <TextField {...params} label={k} />}
+                        renderValue={(selected) => (
+                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                                {selected.map((value) => (
+                                    <Chip key={value} label={value} />
+                                ))}
+                            </Box>
+                        )}
+                    >
+                        {options.map(name => {
+                            return <MenuItem value={name}>{name}</MenuItem>
+                        })}
+                    </Autocomplete>
                 )
             })}
-        </div>
     )
 }
