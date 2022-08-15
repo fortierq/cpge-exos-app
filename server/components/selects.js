@@ -1,20 +1,19 @@
-// import Select from 'react-select'
 import { useState, useEffect } from 'react'
-import MenuItem from '@mui/material/MenuItem';
-import Chip from '@mui/material/Chip';
-import Box from '@mui/material/Box';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Checkbox from '@mui/material/Checkbox';
+import MenuItem from '@mui/material/MenuItem'
+import Chip from '@mui/material/Chip'
+import Box from '@mui/material/Box'
+import Autocomplete from '@mui/material/Autocomplete'
+import TextField from '@mui/material/TextField'
+import Stack from '@mui/material/Stack'
+import Checkbox from '@mui/material/Checkbox'
 
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
+import CheckBoxIcon from '@mui/icons-material/CheckBox'
 
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
+const icon = <CheckBoxOutlineBlankIcon fontSize='small' />
+const checkedIcon = <CheckBoxIcon fontSize='small' />
 
-export default ({ attributes, setAttributes }) => {
+export default ({ setAttributes }) => {
     const [selects, setSelects] = useState({})
 
     function change(attribute) {

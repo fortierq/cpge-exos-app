@@ -1,5 +1,5 @@
 // import { Button } from 'react-bulma-components'
-import Button from '@mui/material/Button';
+import Button from '@mui/material/Button'
 
 export default ({ attributes, setExos }) => {
     async function search() {
