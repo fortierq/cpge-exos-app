@@ -1,12 +1,11 @@
 import prisma from '../../lib/prisma'
 
 
-export default async (req, res) => {
+export default async (_, res) => {
     const attributes = ["ds", "subject", "language", "algorithm"]
     const data = {}
-    await Promise.all(attributes.map(async a => { // parallel requests
-        const rows = await prisma.$queryRawUnsafe(`SELECT name FROM ${a}`)
-        data[a] = rows
-    }))
+    await Promise.all(attributes.map(async a => // parallel requests
+        data[a] = await prisma.$queryRawUnsafe(`SELECT name FROM ${a}`)
+    ))
     res.json(data)
 }

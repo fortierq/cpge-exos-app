@@ -8,9 +8,8 @@ const url = "https://github.com/fortierq/exos/raw/main/exos"
 export default ({ exos }) => {
     const [expanded, setExpanded] = React.useState(false);
 
-    const handleChange = (panel) => (event, isExpanded) => {
-      setExpanded(isExpanded ? panel : false);
-    };
+    const handleChange = panel => (_, isExpanded) =>
+      setExpanded(isExpanded ? panel : false)
 
     return (
         <div>
