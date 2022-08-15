@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+}
+
+.form {
+    border: 2px solid var(--border);
+    padding: 1em;
+    border-radius: 5px;
+    background-color: var(--accent-bg);
+    margin-bottom: 1em;
+    margin-top: 1em;
+    /* padding-top: 0%; */
+}
+
+img.Image{
+    display: inline-block;
+}
+
+img {
+    max-width:600px;
+    width:100%
+}

@@ -1,4 +1,5 @@
-import { Button } from 'react-bulma-components'
+// import { Button } from 'react-bulma-components'
+import Button from '@mui/material/Button';
 
 export default ({ attributes, setExos }) => {
     async function search() {
@@ -22,7 +23,7 @@ export default ({ attributes, setExos }) => {
 
     return (
         <div className='has-text-centered'>
-            <Button color="primary" onClick={search}>Chercher</Button>
+            <Button variant="contained" color="success" onClick={search}>Chercher</Button>
         </div>
     )
 }
