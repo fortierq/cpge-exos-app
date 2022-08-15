@@ -15,6 +15,5 @@ export default async (req, res) => {
             })
         }
     })
-    console.log(exos)
     res.json(exos)
 }

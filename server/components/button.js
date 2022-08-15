@@ -25,8 +25,21 @@ export default ({ attributes }) => {
     // }
 
     async function search() {
-        console.log("search")
-        console.log(attributes)
+        const ans = await fetch(`/api/search`, {
+            "method": "POST",
+            "credentials": 'same-origin',
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify(attributes)
+        })
+        const data = await ans.json()
+
+        const exos = data.map(async (e) => {
+            const path = e.path.replace('/', '-')
+            const ans = await fetch(`/api/exercise/${path}`)
+            const data = await ans.json()
+        })
     //     let att = {}
     //     for (const a of attributes) {
     //         att[a] = $(`#${a}`).val()
