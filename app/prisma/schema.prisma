@@ -1,0 +1,86 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model algorithm {
+    name               String               @id @db.VarChar(255)
+    exercise_algorithm exercise_algorithm[]
+}
+
+/// This model has been renamed to 'Renamedclass' during introspection, because the original name 'class' is reserved.
+model Renamedclass {
+    name           String           @id @db.VarChar(255)
+    exercise_class exercise_class[] @relation("classToexercise_class")
+
+    @@map("class")
+}
+
+model ds {
+    name        String        @id @db.VarChar(255)
+    exercise_ds exercise_ds[]
+}
+
+model exercise {
+    name               String               @db.VarChar(255)
+    path               String               @id @db.VarChar(255)
+    exercise_algorithm exercise_algorithm[]
+    exercise_class     exercise_class[]
+    exercise_ds        exercise_ds[]
+    exercise_language  exercise_language[]
+    exercise_subject   exercise_subject[]
+}
+
+model exercise_algorithm {
+    id             Int       @id @default(autoincrement())
+    exercise_path  String    @db.VarChar(255)
+    algorithm_name String    @db.VarChar(255)
+    algorithm      algorithm @relation(fields: [algorithm_name], references: [name], onDelete: NoAction, onUpdate: NoAction)
+    exercise       exercise  @relation(fields: [exercise_path], references: [path], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model exercise_class {
+    id            Int          @id @default(autoincrement())
+    exercise_path String       @db.VarChar(255)
+    class_name    String       @db.VarChar(255)
+    class         Renamedclass @relation("classToexercise_class", fields: [class_name], references: [name], onDelete: NoAction, onUpdate: NoAction)
+    exercise      exercise     @relation(fields: [exercise_path], references: [path], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model exercise_ds {
+    id            Int      @id @default(autoincrement())
+    exercise_path String   @db.VarChar(255)
+    ds_name       String   @db.VarChar(255)
+    ds            ds       @relation(fields: [ds_name], references: [name], onDelete: NoAction, onUpdate: NoAction)
+    exercise      exercise @relation(fields: [exercise_path], references: [path], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model exercise_language {
+    id            Int      @id @default(autoincrement())
+    exercise_path String   @db.VarChar(255)
+    language_name String   @db.VarChar(255)
+    exercise      exercise @relation(fields: [exercise_path], references: [path], onDelete: NoAction, onUpdate: NoAction)
+    language      language @relation(fields: [language_name], references: [name], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model exercise_subject {
+    id            Int      @id @default(autoincrement())
+    exercise_path String   @db.VarChar(255)
+    subject_name  String   @db.VarChar(255)
+    exercise      exercise @relation(fields: [exercise_path], references: [path], onDelete: NoAction, onUpdate: NoAction)
+    subject       subject  @relation(fields: [subject_name], references: [name], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model language {
+    name              String              @id @db.VarChar(255)
+    exercise_language exercise_language[]
+}
+
+model subject {
+    name             String             @id @db.VarChar(255)
+    exercise_subject exercise_subject[]
+}

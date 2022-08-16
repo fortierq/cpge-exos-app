@@ -9,9 +9,9 @@ services:
     links:
       - db
     volumes:
-      - ./server/:/app
+      - ./app/:/app
     env_file:
-      - server/.env
+      - app/.env
     depends_on:
       - db
 
@@ -20,7 +20,7 @@ services:
     ports:
       - 5432:5432
     env_file:
-      - server/.env
+      - app/.env
     volumes:
-      - ./sql:/docker-entrypoint-initdb.d
+      - ./db:/docker-entrypoint-initdb.d
       # - ./data:/var/lib/postgresql/data
