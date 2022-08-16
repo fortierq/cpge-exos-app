@@ -30,12 +30,10 @@ export default ({ setSelectedOptions }) => {
   React.useEffect(() => {
     (async () => {
       const data = await fetch_json(`/api/attributes`);
-      console.log("data", data);
       setOptions(data);
     })();
   }, []);
 
-  console.log("options", options);
   return (
     <Stack spacing={1.5}>
       {attributes.map((attribute) => {
