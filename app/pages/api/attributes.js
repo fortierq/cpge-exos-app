@@ -6,5 +6,9 @@ export default async (_, res) => {
     await Promise.all(attributes.map(async a => // parallel requests
         data[a] = await prisma.$queryRawUnsafe(`SELECT name FROM ${a}`)
     ))
-    res.json(data)
+    const d2 = {}
+    for (const a of attributes) {
+        d2[a] = data[a].map(d => d.name)
+    }
+    res.json(d2)
 }

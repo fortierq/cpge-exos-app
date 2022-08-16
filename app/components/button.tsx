@@ -1,8 +1,9 @@
 import Button from "@mui/material/Button";
+import { fetch_json } from "../lib/utils";
 
 export default ({ selectedOptions, setExos }) => {
   async function search() {
-    const ans = await fetch(`/api/search`, {
+    const data = await fetch_json(`/api/search`, {
       method: "POST",
       credentials: "same-origin",
       headers: {
@@ -10,13 +11,11 @@ export default ({ selectedOptions, setExos }) => {
       },
       body: JSON.stringify(selectedOptions),
     });
-    const data = await ans.json();
 
     setExos(
       await Promise.all(
-        data.map(async (e: { path: string }) => {
-          const ans = await fetch(`/api/exercise/${e.path.replace("/", "-")}`);
-          return await ans.json();
+        data.map(async ({ path }) => {
+          return await fetch_json(`/api/exercise/${path.replace("/", "-")}`);
         })
       )
     );

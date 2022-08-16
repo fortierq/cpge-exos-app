@@ -8,38 +8,37 @@ import Checkbox from "@mui/material/Checkbox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { attributes, translate } from "../lib/constants";
+import { fetch_json } from "../lib/utils";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default ({ setSelectedOptions }) => {
-  const [selects, setSelects] = React.useState({});
+  const [options, setOptions] = React.useState([]);
 
-  function change(attribute) {
-    return (_, value) =>
-      setSelectedOptions((options) => {
-        const a = { ...options, [attribute]: value };
-        if (value.length == 0) {
-          delete a[attribute];
+  function change(attribute: string) {
+    return (_, selected: string[]) => {
+      setSelectedOptions((options: Record<string, string[]>) => {
+        if (selected.length != 0) {
+          options[attribute] = selected;
         }
-        return a;
+        return options;
       });
+    };
   }
 
-  React.useEffect(
-    () =>
-      (async () => {
-        const ans = await fetch(`api/attributes`);
-        setSelects(await ans.json());
-      })(),
-    []
-  );
+  React.useEffect(() => {
+    (async () => {
+      const data = await fetch_json(`/api/attributes`);
+      console.log("data", data);
+      setOptions(data);
+    })();
+  }, []);
 
+  console.log("options", options);
   return (
     <Stack spacing={1.5}>
       {attributes.map((attribute) => {
-        if (!(attribute in selects)) return;
-        const options = selects[attribute].map((e) => e.name);
         return (
           <Autocomplete
             disableCloseOnSelect
@@ -54,7 +53,7 @@ export default ({ setSelectedOptions }) => {
                 {translate(option)}
               </li>
             )}
-            options={options}
+            options={options[attribute] ?? []}
             onChange={change(attribute)}
             multiple
             renderInput={(params) => (

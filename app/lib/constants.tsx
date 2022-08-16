@@ -1,8 +1,13 @@
-export const attributes = ["subject", "ds", "algorithm", "language"];
+export const attributes: Readonly<string[]> = [
+  "subject",
+  "ds",
+  "algorithm",
+  "language",
+];
 
 export const url = "https://github.com/fortierq/exos/raw/main/exos";
 
-const i18n = {
+const i18n: Readonly<Record<string, string>> = {
   subject: "Thème",
   ds: "Structure de données",
   algorithm: "Algorithme",
