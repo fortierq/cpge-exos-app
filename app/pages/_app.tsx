@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 import "../css/style.css";
 import Button from "../components/button";
 import Selects from "../components/selects";
@@ -7,8 +7,8 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Unstable_Grid2";
 
 export default () => {
-  const [selectedOptions, setSelectedOptions] = useState({});
-  const [exos, setExos] = useState([]);
+  const [selectedOptions, setSelectedOptions] = React.useState({});
+  const [exos, setExos] = React.useState([]);
 
   return (
     <div>

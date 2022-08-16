@@ -25,6 +25,6 @@ const i18n = {
   priority_queue: "file de priorité",
 };
 
-export function translate(s) {
+export function translate(s: string) {
   return i18n[s] ?? s;
 }

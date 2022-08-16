@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import MenuItem from "@mui/material/MenuItem";
+import * as React from "react";
 import Chip from "@mui/material/Chip";
 import Box from "@mui/material/Box";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -14,7 +13,7 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default ({ setSelectedOptions }) => {
-  const [selects, setSelects] = useState({});
+  const [selects, setSelects] = React.useState({});
 
   function change(attribute) {
     return (_, value) =>
@@ -27,7 +26,7 @@ export default ({ setSelectedOptions }) => {
       });
   }
 
-  useEffect(
+  React.useEffect(
     () =>
       (async () => {
         const ans = await fetch(`api/attributes`);

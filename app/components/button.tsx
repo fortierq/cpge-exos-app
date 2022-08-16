@@ -14,9 +14,8 @@ export default ({ selectedOptions, setExos }) => {
 
     setExos(
       await Promise.all(
-        data.map(async (e) => {
-          const path = e.path.replace("/", "-");
-          const ans = await fetch(`/api/exercise/${path}`);
+        data.map(async (e: { path: string }) => {
+          const ans = await fetch(`/api/exercise/${e.path.replace("/", "-")}`);
           return await ans.json();
         })
       )
