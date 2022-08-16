@@ -1,17 +1,16 @@
 services:
   node:
     image: qfortier/exos
-    command: npm run dev
-    working_dir: /app
+    command: sleep infinity
     ports:
       - 3000:3000
       - 5555:5555
     links:
       - db
     volumes:
-      - ./app/:/app
+      - ..:/workspace:cached
     env_file:
-      - .env
+      - ../.env
     depends_on:
       - db
 
@@ -20,7 +19,7 @@ services:
     ports:
       - 5432:5432
     env_file:
-      - .env
+      - ../.env
     volumes:
-      - ./db:/docker-entrypoint-initdb.d
-      - ./data:/var/lib/postgresql/data
+      - ../db:/docker-entrypoint-initdb.d
+      - ../data:/var/lib/postgresql/data

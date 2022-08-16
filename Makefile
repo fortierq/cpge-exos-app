@@ -16,3 +16,6 @@ run:
 
 prisma:
 	docker exec -it $(container_node) npx prisma db pull && npx prisma generate
+
+dev:
+	npm --prefix app/ run dev
