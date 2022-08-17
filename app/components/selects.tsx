@@ -41,7 +41,7 @@ export default ({ setSelectedOptions }) => {
         return (
           <Autocomplete
             disableCloseOnSelect
-            renderOption={(props, option, { selected }) => (
+            renderOption={(props, option: string, { selected }) => (
               <li {...props}>
                 <Checkbox
                   icon={icon}
@@ -64,14 +64,14 @@ export default ({ setSelectedOptions }) => {
               <TextField {...params} label={translate(attribute)} />
             )}
             renderTags={(value, getTagProps) =>
-              value.map((option, index) => (
+              value.map((option: string, index) => (
                 <Chip label={translate(option)} {...getTagProps({ index })} />
               ))
             }
             renderValue={(selected) => (
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                {selected.map((value) => (
-                  <Chip key={value} label={value} />
+                {selected.map((value: string) => (
+                  <Chip key={value} label={"aa"} />
                 ))}
               </Box>
             )}
