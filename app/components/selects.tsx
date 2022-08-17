@@ -68,13 +68,6 @@ export default ({ setSelectedOptions }) => {
                 <Chip label={translate(option)} {...getTagProps({ index })} />
               ))
             }
-            renderValue={(selected) => (
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                {selected.map((value: string) => (
-                  <Chip key={value} label={"aa"} />
-                ))}
-              </Box>
-            )}
           ></Autocomplete>
         );
       })}
