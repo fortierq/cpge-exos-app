@@ -8,13 +8,13 @@ import Checkbox from "@mui/material/Checkbox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { attributes, translate } from "../lib/constants";
-import { fetch_json } from "../lib/utils";
+import { fetchJson } from "../lib/utils";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default ({ setSelectedOptions }) => {
-  const [options, setOptions] = React.useState([]);
+  const [options, setOptions] = React.useState({});
 
   function change(attribute: string) {
     return (_, selected: string[]) => {
@@ -29,14 +29,20 @@ export default ({ setSelectedOptions }) => {
 
   React.useEffect(() => {
     (async () => {
-      const data = await fetch_json(`/api/attributes`);
-      setOptions(data);
+      const data = await fetchJson(`/api/attributes`);
+      const data_i18n = {};
+      attributes.forEach((attribute) => {
+        data_i18n[translate(attribute)] = data[attribute].map(
+          (option: string) => translate(option)
+        );
+      });
+      setOptions(data_i18n);
     })();
   }, []);
 
   return (
     <Stack spacing={1.5}>
-      {attributes.map((attribute) => {
+      {Object.entries(options).map(([attribute, options]) => {
         return (
           <Autocomplete
             disableCloseOnSelect
@@ -48,18 +54,18 @@ export default ({ setSelectedOptions }) => {
                   style={{ marginRight: 8 }}
                   checked={selected}
                 />
-                {translate(option)}
+                {option}
               </li>
             )}
-            options={options[attribute] ?? []}
+            options={options ?? []}
             onChange={change(attribute)}
             multiple
             renderInput={(params) => (
-              <TextField {...params} label={translate(attribute)} />
+              <TextField {...params} label={attribute} />
             )}
             renderTags={(value, getTagProps) =>
               value.map((option, index) => (
-                <Chip label={translate(option)} {...getTagProps({ index })} />
+                <Chip label={option} {...getTagProps({ index })} />
               ))
             }
             renderValue={(selected) => (

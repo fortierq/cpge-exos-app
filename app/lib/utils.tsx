@@ -1,4 +1,4 @@
-export async function fetch_json(
+export async function fetchJson(
   url: string,
   options?: RequestInit
 ): Promise<any> {
