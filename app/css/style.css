@@ -1,23 +1,21 @@
 h1 {
-    text-align: center;
-    font-size:xx-large;
+  text-align: center;
+  font-size: xx-large;
 }
 
-.form {
-    border: 2px solid var(--border);
-    padding: 1em;
-    border-radius: 5px;
-    background-color: var(--accent-bg);
-    margin-bottom: 1em;
-    margin-top: 1em;
-    /* padding-top: 0%; */
-}
-
-img.Image{
-    display: inline-block;
+img.Image {
+  display: inline-block;
 }
 
 img {
-    max-width:600px;
-    width:100%
+  max-width: 600px;
+  width: 100%;
+}
+
+.MuiButtonBase-root {
+  text-transform: none;
+}
+
+.css-15v22id-MuiAccordionDetails-root {
+  padding: 0%;
 }

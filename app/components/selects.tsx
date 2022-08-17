@@ -1,6 +1,5 @@
 import * as React from "react";
 import Chip from "@mui/material/Chip";
-import Box from "@mui/material/Box";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -41,6 +40,22 @@ export default ({ setSelectedOptions }) => {
         return (
           <Autocomplete
             disableCloseOnSelect
+            multiple
+            autoHighlight
+            filterOptions={createFilterOptions({
+              matchFrom: "start",
+              stringify: translate,
+            })}
+            options={options[attribute] ?? []}
+            onChange={change(attribute)}
+            renderInput={(params) => (
+              <TextField {...params} label={translate(attribute)} />
+            )}
+            renderTags={(value, getTagProps) =>
+              value.map((option: string, index) => (
+                <Chip label={translate(option)} {...getTagProps({ index })} />
+              ))
+            }
             renderOption={(props, option: string, { selected }) => (
               <li {...props}>
                 <Checkbox
@@ -52,22 +67,6 @@ export default ({ setSelectedOptions }) => {
                 {translate(option)}
               </li>
             )}
-            filterOptions={createFilterOptions({
-              matchFrom: "start",
-              stringify: translate,
-            })}
-            autoHighlight={true}
-            options={options[attribute] ?? []}
-            onChange={change(attribute)}
-            multiple
-            renderInput={(params) => (
-              <TextField {...params} label={translate(attribute)} />
-            )}
-            renderTags={(value, getTagProps) =>
-              value.map((option: string, index) => (
-                <Chip label={translate(option)} {...getTagProps({ index })} />
-              ))
-            }
           ></Autocomplete>
         );
       })}

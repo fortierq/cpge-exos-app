@@ -22,10 +22,8 @@ export default ({ selectedOptions, setExos }) => {
   }
 
   return (
-    <div className="has-text-centered">
-      <Button variant="contained" color="success" onClick={search}>
-        Chercher
-      </Button>
-    </div>
+    <Button size="large" variant="contained" color="success" onClick={search}>
+      CHERCHER
+    </Button>
   );
 };
