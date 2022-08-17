@@ -1,7 +1,7 @@
 import * as React from "react";
 import Chip from "@mui/material/Chip";
 import Box from "@mui/material/Box";
-import Autocomplete from "@mui/material/Autocomplete";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Checkbox from "@mui/material/Checkbox";
@@ -18,6 +18,7 @@ export default ({ setSelectedOptions }) => {
 
   function change(attribute: string) {
     return (_, selected: string[]) => {
+      console.log("change", selected);
       setSelectedOptions((options: Record<string, string[]>) => {
         if (selected.length != 0) {
           options[attribute] = selected;
@@ -30,19 +31,13 @@ export default ({ setSelectedOptions }) => {
   React.useEffect(() => {
     (async () => {
       const data = await fetchJson(`/api/attributes`);
-      const data_i18n = {};
-      attributes.forEach((attribute) => {
-        data_i18n[translate(attribute)] = data[attribute].map(
-          (option: string) => translate(option)
-        );
-      });
-      setOptions(data_i18n);
+      setOptions(data);
     })();
   }, []);
 
   return (
     <Stack spacing={1.5}>
-      {Object.entries(options).map(([attribute, options]) => {
+      {attributes.map((attribute) => {
         return (
           <Autocomplete
             disableCloseOnSelect
@@ -54,18 +49,23 @@ export default ({ setSelectedOptions }) => {
                   style={{ marginRight: 8 }}
                   checked={selected}
                 />
-                {option}
+                {translate(option)}
               </li>
             )}
-            options={options ?? []}
+            filterOptions={createFilterOptions({
+              matchFrom: "start",
+              stringify: translate,
+            })}
+            autoHighlight={true}
+            options={options[attribute] ?? []}
             onChange={change(attribute)}
             multiple
             renderInput={(params) => (
-              <TextField {...params} label={attribute} />
+              <TextField {...params} label={translate(attribute)} />
             )}
             renderTags={(value, getTagProps) =>
               value.map((option, index) => (
-                <Chip label={option} {...getTagProps({ index })} />
+                <Chip label={translate(option)} {...getTagProps({ index })} />
               ))
             }
             renderValue={(selected) => (
