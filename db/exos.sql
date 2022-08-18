@@ -2,45 +2,35 @@ CREATE TABLE IF NOT EXISTS exercise (
 	name VARCHAR(255) NOT NULL,
 	path VARCHAR(255) NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS subject (
-	name VARCHAR(255) NOT NULL PRIMARY KEY
-);
+	name VARCHAR(255) NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS exercise_subject (
+	id SERIAL PRIMARY KEY,
 	exercise_path VARCHAR(255) NOT NULL REFERENCES exercise,
-	subject_name VARCHAR(255) NOT NULL REFERENCES subject,
-	PRIMARY KEY (exercise_path, subject_name)
-);
+	subject_name VARCHAR(255) NOT NULL REFERENCES subject);
 CREATE TABLE IF NOT EXISTS ds (
-	name VARCHAR(255) NOT NULL PRIMARY KEY
-);
+	name VARCHAR(255) NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS exercise_ds (
+	id SERIAL PRIMARY KEY,
 	exercise_path VARCHAR(255) NOT NULL REFERENCES exercise,
-	ds_name VARCHAR(255) NOT NULL REFERENCES ds,
-	PRIMARY KEY (exercise_path, ds_name)
-);
+	ds_name VARCHAR(255) NOT NULL REFERENCES ds);
 CREATE TABLE IF NOT EXISTS language (
-	name VARCHAR(255) NOT NULL PRIMARY KEY
-);
+	name VARCHAR(255) NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS exercise_language (
+	id SERIAL PRIMARY KEY,
 	exercise_path VARCHAR(255) NOT NULL REFERENCES exercise,
-	language_name VARCHAR(255) NOT NULL REFERENCES language,
-	PRIMARY KEY (exercise_path, language_name)
-);
+	language_name VARCHAR(255) NOT NULL REFERENCES language);
 CREATE TABLE IF NOT EXISTS algorithm (
-	name VARCHAR(255) NOT NULL PRIMARY KEY
-);
+	name VARCHAR(255) NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS exercise_algorithm (
+	id SERIAL PRIMARY KEY,
 	exercise_path VARCHAR(255) NOT NULL REFERENCES exercise,
-	algorithm_name VARCHAR(255) NOT NULL REFERENCES algorithm,
-	PRIMARY KEY (exercise_path, algorithm_name)
-);
+	algorithm_name VARCHAR(255) NOT NULL REFERENCES algorithm);
 CREATE TABLE IF NOT EXISTS class (
-	name VARCHAR(255) NOT NULL PRIMARY KEY
-);
+	name VARCHAR(255) NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS exercise_class (
+	id SERIAL PRIMARY KEY,
 	exercise_path VARCHAR(255) NOT NULL REFERENCES exercise,
-	class_name VARCHAR(255) NOT NULL REFERENCES class,
-	PRIMARY KEY (exercise_path, class_name)
-);
+	class_name VARCHAR(255) NOT NULL REFERENCES class);
 INSERT INTO exercise(name, path) VALUES ('Point fixe dans un tableau', 'array/fixed');
 INSERT INTO subject (name) VALUES ('array');
 INSERT INTO exercise_subject (exercise_path, subject_name) VALUES ('array/fixed', 'array');

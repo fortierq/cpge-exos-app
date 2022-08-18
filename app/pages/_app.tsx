@@ -25,22 +25,21 @@ export default () => {
       >
         Fork me on GitHub
       </GitHubForkRibbon>
-      <Typography variant="h4" align="center">
+      <Typography variant="h4" align="center" mt={3}>
         Exercices d'informatique en CPGE
       </Typography>
 
       <Typography variant="subtitle1" align="center">
         MP2I/MPI, MPSI/MP option info et informatique commune
       </Typography>
-      <br />
-      <Grid container>
+
+      <Grid container mt={5}>
         <Grid md={3.33} xs={12}>
-          <Stack spacing={2}>
+          <Stack spacing={2} mb={3}>
             <Selects setSelectedOptions={setSelectedOptions} />
             <div style={{ textAlign: "center" }}>
               <Button selectedOptions={selectedOptions} setExos={setExos} />
             </div>
-            <br />
           </Stack>
         </Grid>
 

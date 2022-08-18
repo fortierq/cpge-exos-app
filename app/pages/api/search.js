@@ -13,6 +13,18 @@ export default async (req, res) => {
         };
       }),
     },
+    include: {
+      exercise_subject: {
+        select: {
+          subject_name: true,
+        },
+      },
+    },
   });
+  //   Promise.all(exos.
+  //   for (const exo of exos) {
+  //     exo
+  //   }
+  console.log(exos);
   res.json(exos);
 };
