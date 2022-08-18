@@ -6,6 +6,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Exo from "./exo";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
+import { translate } from "../lib/constants";
+import Stack from "@mui/material/Stack";
 
 export default ({ exos }) => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
@@ -16,7 +18,6 @@ export default ({ exos }) => {
   return (
     <div>
       {exos.map((exo: { name: string; path: string; exercise_subject }) => {
-        console.log("exo", exo);
         return (
           <Accordion
             sx={{
@@ -35,15 +36,16 @@ export default ({ exos }) => {
               }}
             >
               {exo.name}
-              <Box sx={{ paddingX: 2 }} />
-              {exo.exercise_subject.map(({ subject_name }) => (
-                <Chip
-                  label={subject_name}
-                  variant="outlined"
-                  size="small"
-                  sx={{ color: "text.secondary" }}
-                />
-              ))}
+              <Stack direction="row" spacing={1} sx={{ ml: 2 }}>
+                {exo.exercise_subject.map(({ subject_name }) => (
+                  <Chip
+                    label={translate(subject_name)}
+                    variant="outlined"
+                    size="small"
+                    sx={{ color: "text.secondary" }}
+                  />
+                ))}
+              </Stack>
             </AccordionSummary>
             <AccordionDetails>
               <Exo exo={exo} />
