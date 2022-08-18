@@ -10,17 +10,29 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 
+const url_exo = (path_relative: string, cor: boolean) => {
+  const filename = path_relative.substring(path_relative.lastIndexOf("/") + 1);
+  let path = `${url}/${path_relative}/${filename}`;
+  if (cor) {
+    path += "_cor";
+  }
+  return `${path}.png`;
+};
+
 export default ({ exos }) => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
-  const handleChange =
-    (panel: string) => (_: React.SyntheticEvent, isExpanded: boolean) =>
-      setExpanded(isExpanded ? panel : false);
+  const handleChange = (panel: string) => (_, isExpanded: boolean) =>
+    setExpanded(isExpanded ? panel : false);
 
   const [value, setValue] = React.useState(0);
 
-  const changeTabs = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+  const changeTabs = (exo_path) => (_, newValue: number) => {
+    if (newValue === 2) {
+      window.open(`${url}/${exo_path}`, "_blank", "noopener,noreferrer");
+    } else {
+      setValue(newValue);
+    }
   };
 
   function TabPanel(props) {
@@ -31,7 +43,6 @@ export default ({ exos }) => {
         role="tabpanel"
         hidden={value !== index}
         id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
         {...other}
       >
         {value === index && (
@@ -47,12 +58,14 @@ export default ({ exos }) => {
     <div>
       {exos.map(
         (e: { name: string; path: string; exercise_subject: string }) => {
-          console.log(e);
-          const src = `${url}/${e.path}/${e.path.substring(
-            e.path.lastIndexOf("/") + 1
-          )}.png`;
+          let url_exo_enonce = url_exo(e.path, false);
           return (
             <Accordion
+              sx={{
+                border: 1,
+                "margin-bottom": "-1px",
+                borderColor: "grey.500",
+              }}
               disableGutters
               expanded={expanded === e.path}
               onChange={handleChange(e.path)}
@@ -60,13 +73,12 @@ export default ({ exos }) => {
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 sx={{
-                  bgcolor: "rgba(0, 0, 0, .025)",
+                  bgcolor: "rgba(0, 0, 0, .02)",
                 }}
               >
                 {e.name}
                 <Box sx={{ paddingX: 2 }} />
                 <Chip
-                  clickable
                   label="graphe"
                   variant="outlined"
                   size="small"
@@ -74,7 +86,6 @@ export default ({ exos }) => {
                 />
                 <Box sx={{ paddingX: 0.5 }} />
                 <Chip
-                  clickable
                   label="liste"
                   variant="outlined"
                   size="small"
@@ -86,26 +97,26 @@ export default ({ exos }) => {
                   <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                     <Tabs
                       value={value}
-                      onChange={changeTabs}
-                      aria-label="basic tabs example"
+                      onChange={changeTabs(e.path)}
                       sx={{
-                        bgcolor: "rgba(0, 0, 0, .025)",
+                        bgcolor: "rgba(0, 0, 0, .02)",
                       }}
                     >
-                      <Tab label="Énoncé" />
-                      <Tab label="Solution" />
-                      <Tab label="LaTeX" />
+                      <Tab label="Énoncé" disableRipple />
+                      <Tab label="Corrigé" disableRipple />
+                      <Tab label="GitHub" disableRipple />
                     </Tabs>
                   </Box>
                   <TabPanel value={value} index={0}>
-                    <img src={src} />
+                    <img
+                      src={url_exo_enonce}
+                      alt={`Erreur : url invalide. Merci de soumettre une issue sur GitHub avec le nom de l'exercice.`}
+                    />
                   </TabPanel>
                   <TabPanel value={value} index={1}>
-                    Item Two
+                    <img alt="Pas de corrigé" src={url_exo(e.path, true)} />
                   </TabPanel>
-                  <TabPanel value={value} index={2}>
-                    Item Three
-                  </TabPanel>
+                  <TabPanel value={value} index={2}></TabPanel>
                 </Box>
               </AccordionDetails>
             </Accordion>

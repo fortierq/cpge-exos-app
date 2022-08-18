@@ -9,7 +9,8 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
+import GitHubForkRibbon from "react-github-fork-ribbon";
 
 export default () => {
   const [selectedOptions, setSelectedOptions] = React.useState({});
@@ -17,23 +18,39 @@ export default () => {
 
   return (
     <div>
-      {/* <AppBar sx={{ bgcolor: "black" }} position="static"> */}
-      <h1>Exercices d'informatique</h1>
-      {/* </AppBar> */}
+      <GitHubForkRibbon
+        href="https://github.com/fortierq/cpge-exos-app"
+        color="green"
+        position="right"
+      >
+        Fork me on GitHub
+      </GitHubForkRibbon>
+      <Typography variant="h4" align="center">
+        Exercices d'informatique en CPGE
+      </Typography>
+
+      <Typography variant="subtitle1" align="center">
+        MP2I/MPI, MPSI/MP option info et informatique commune
+      </Typography>
       <br />
-      <Grid container spacing={2}>
-        <Grid md={4} xs={12}>
+      <Grid container>
+        <Grid md={3.33} xs={12}>
           <Stack spacing={2}>
             <Selects setSelectedOptions={setSelectedOptions} />
             <div style={{ textAlign: "center" }}>
               <Button selectedOptions={selectedOptions} setExos={setExos} />
             </div>
+            <br />
           </Stack>
         </Grid>
 
-        <Grid md={8} xs={12}>
+        <Grid md={0.33} xs={0}></Grid>
+
+        <Grid md={8} xs={12} justifyContent="center">
           <Exos exos={exos} />
         </Grid>
+
+        <Grid md={0.33} xs={0}></Grid>
       </Grid>
     </div>
   );

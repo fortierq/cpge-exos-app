@@ -5,7 +5,7 @@ export const attributes: Readonly<string[]> = [
   "language",
 ];
 
-export const url = "https://github.com/fortierq/exos/raw/main/exos";
+export const url = "https://github.com/fortierq/cpge-exos/raw/main/exos";
 
 const i18n: Readonly<Record<string, string>> = {
   subject: "Thème",

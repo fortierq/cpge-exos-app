@@ -17,7 +17,6 @@ export default ({ setSelectedOptions }) => {
 
   function change(attribute: string) {
     return (_, selected: string[]) => {
-      console.log("change", selected);
       setSelectedOptions((options: Record<string, string[]>) => {
         if (selected.length != 0) {
           options[attribute] = selected;
@@ -39,7 +38,6 @@ export default ({ setSelectedOptions }) => {
       {attributes.map((attribute) => {
         return (
           <Autocomplete
-            disableCloseOnSelect
             multiple
             autoHighlight
             filterOptions={createFilterOptions({
