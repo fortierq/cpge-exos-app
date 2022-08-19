@@ -5,10 +5,6 @@ import Selects from "../components/selects";
 import Exos from "../components/exos";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Unstable_Grid2";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
 import Typography from "@mui/material/Typography";
 import GitHubForkRibbon from "react-github-fork-ribbon";
 

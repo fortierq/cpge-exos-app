@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import { translate } from "../lib/constants";
 import Stack from "@mui/material/Stack";
+import { Typography } from "../node_modules/@mui/material/index";
 
 export default ({ exos }) => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
@@ -35,7 +36,7 @@ export default ({ exos }) => {
                 bgcolor: "rgba(0, 0, 0, .02)",
               }}
             >
-              {exo.name}
+              <Typography>{exo.name}</Typography>
               <Stack direction="row" spacing={1} sx={{ ml: 2 }}>
                 {exo.exercise_subject.map(({ subject_name }) => (
                   <Chip

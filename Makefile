@@ -15,7 +15,9 @@ start:
 	docker start $(container_node)
 run:
 	docker run -it --name $(container_node) $(image)
-
+push:
+	docker push $(image)
+	
 prisma:
 	docker exec -it $(container_node) npx prisma db pull && npx prisma generate
 

@@ -1,11 +1,9 @@
 services:
   node:
-    image: qfortier/exos
-    command: npm --prefix app/ run start
-    working_dir: /workspace
+    build: .
+    command: "npx next start"
     ports:
       - 3000:3000
-      - 5555:5555
     links:
       - db
     volumes:
