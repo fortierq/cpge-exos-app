@@ -54,6 +54,7 @@ export default ({ setSelectedOptions }) => {
                 <Chip label={translate(option)} {...getTagProps({ index })} />
               ))
             }
+            key={attribute}
             renderOption={(props, option: string, { selected }) => (
               <li {...props}>
                 <Checkbox

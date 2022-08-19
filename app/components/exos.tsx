@@ -22,12 +22,12 @@ export default ({ exos }) => {
           <Accordion
             sx={{
               border: 1,
-              "margin-bottom": "-1px",
               borderColor: "grey.500",
             }}
             disableGutters
             expanded={expanded === exo.path}
             onChange={handleChange(exo.path)}
+            key={exo.path}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -43,6 +43,7 @@ export default ({ exos }) => {
                     variant="outlined"
                     size="small"
                     sx={{ color: "text.secondary" }}
+                    key={`${exo.path}_${subject_name}`}
                   />
                 ))}
               </Stack>
