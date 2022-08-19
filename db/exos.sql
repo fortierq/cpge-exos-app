@@ -31,3 +31,26 @@ CREATE TABLE IF NOT EXISTS exercise_classe (
 	id SERIAL PRIMARY KEY,
 	exercise_path VARCHAR(255) NOT NULL REFERENCES exercise,
 	classe_name VARCHAR(255) NOT NULL REFERENCES classe);
+INSERT INTO exercise(name, path) VALUES ('Problème de flot maximum', 'graph/flow');
+INSERT INTO subject (name) VALUES ('graph');
+INSERT INTO exercise_subject (exercise_path, subject_name) VALUES ('graph/flow', 'graph');
+INSERT INTO ds (name) VALUES ('graph');
+INSERT INTO exercise_ds (exercise_path, ds_name) VALUES ('graph/flow', 'graph');
+INSERT INTO language (name) VALUES ('ocaml');
+INSERT INTO exercise_language (exercise_path, language_name) VALUES ('graph/flow', 'ocaml');
+INSERT INTO classe (name) VALUES ('mp2i');
+INSERT INTO exercise_classe (exercise_path, classe_name) VALUES ('graph/flow', 'mp2i');
+INSERT INTO classe (name) VALUES ('mp');
+INSERT INTO exercise_classe (exercise_path, classe_name) VALUES ('graph/flow', 'mp');
+INSERT INTO exercise(name, path) VALUES ('Point fixe dans un tableau', 'array/fixed');
+INSERT INTO subject (name) VALUES ('array');
+INSERT INTO exercise_subject (exercise_path, subject_name) VALUES ('array/fixed', 'array');
+INSERT INTO subject (name) VALUES ('sort');
+INSERT INTO exercise_subject (exercise_path, subject_name) VALUES ('array/fixed', 'sort');
+INSERT INTO ds (name) VALUES ('array');
+INSERT INTO exercise_ds (exercise_path, ds_name) VALUES ('array/fixed', 'array');
+INSERT INTO language (name) VALUES ('c');
+INSERT INTO exercise_language (exercise_path, language_name) VALUES ('array/fixed', 'c');
+INSERT INTO algorithm (name) VALUES ('dichotomy');
+INSERT INTO exercise_algorithm (exercise_path, algorithm_name) VALUES ('array/fixed', 'dichotomy');
+INSERT INTO exercise_classe (exercise_path, classe_name) VALUES ('array/fixed', 'mp2i');
