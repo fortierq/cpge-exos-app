@@ -1,7 +1,7 @@
 services:
   node:
     image: qfortier/exos
-    command: sleep infinity
+    command: npm --prefix app/ run start
     working_dir: /workspace
     ports:
       - 3000:3000

@@ -21,5 +21,8 @@ prisma:
 
 dev:
 	npm --prefix app/ run dev
+prod:
+	npm --prefix app/ run build && npm --prefix app/ run start
+
 db:
 	docker exec -it $(container_db) psql -U postgres
