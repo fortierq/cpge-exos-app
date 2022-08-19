@@ -50,12 +50,12 @@ export default ({ setSelectedOptions }) => {
               <TextField {...params} label={translate(attribute)} />
             )}
             renderTags={(value, getTagProps) =>
-              value.map((option, index) => (
+              value.map((option: string, index) => (
                 <Chip label={translate(option)} {...getTagProps({ index })} />
               ))
             }
             key={attribute}
-            renderOption={(props, option, { selected }) => (
+            renderOption={(props, option: string, { selected }) => (
               <li {...props}>
                 <Checkbox
                   icon={icon}

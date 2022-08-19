@@ -1,8 +1,8 @@
 export const attributes: Readonly<string[]> = [
+  "subject",
   "ds",
   "algorithm",
   "language",
-  "classe",
 ];
 
 export const url = "https://github.com/fortierq/cpge-exos/raw/main/exos";
@@ -28,12 +28,8 @@ const i18n: Readonly<Record<string, string>> = {
   dichotomy: "dichotomie",
   deque: "file à 2 bouts",
   priority_queue: "file de priorité",
-  classe: "Classe",
 };
 
-export function translate(s) {
-  if (["mp", "mp2i", "mpsi", "mpi", "bcpst1", "bcpst2"].includes(s)) {
-    return s.toUpperCase();
-  }
+export function translate(s: string) {
   return i18n[s] ?? s;
 }
