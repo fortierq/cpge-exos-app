@@ -9,7 +9,7 @@ up:
 	docker compose up
 build:
 	docker build -t $(image) app # --no-cache 
-exec:
+exec: start
 	docker exec -it $(container_node) bash
 start:
 	docker start $(container_node)
@@ -17,7 +17,7 @@ run:
 	docker run -it --name $(container_node) $(image)
 
 prisma:
-	docker exec -it $(container_node) && npx prisma db pull && npx prisma generate
+	docker exec -it $(container_node) npx prisma db pull && npx prisma generate
 
 dev:
 	npm --prefix app/ run dev

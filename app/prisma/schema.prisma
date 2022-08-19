@@ -12,14 +12,6 @@ model algorithm {
     exercise_algorithm exercise_algorithm[]
 }
 
-/// This model has been renamed to 'Renamedclass' during introspection, because the original name 'class' is reserved.
-model Renamedclass {
-    name           String           @id @db.VarChar(255)
-    exercise_class exercise_class[] @relation("classToexercise_class")
-
-    @@map("class")
-}
-
 model ds {
     name        String        @id @db.VarChar(255)
     exercise_ds exercise_ds[]
@@ -29,7 +21,7 @@ model exercise {
     name               String               @db.VarChar(255)
     path               String               @id @db.VarChar(255)
     exercise_algorithm exercise_algorithm[]
-    exercise_class     exercise_class[]
+    exercise_classe    exercise_classe[]
     exercise_ds        exercise_ds[]
     exercise_language  exercise_language[]
     exercise_subject   exercise_subject[]
@@ -41,14 +33,6 @@ model exercise_algorithm {
     algorithm_name String    @db.VarChar(255)
     algorithm      algorithm @relation(fields: [algorithm_name], references: [name], onDelete: NoAction, onUpdate: NoAction)
     exercise       exercise  @relation(fields: [exercise_path], references: [path], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model exercise_class {
-    id            Int          @id @default(autoincrement())
-    exercise_path String       @db.VarChar(255)
-    class_name    String       @db.VarChar(255)
-    class         Renamedclass @relation("classToexercise_class", fields: [class_name], references: [name], onDelete: NoAction, onUpdate: NoAction)
-    exercise      exercise     @relation(fields: [exercise_path], references: [path], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model exercise_ds {
@@ -83,4 +67,17 @@ model language {
 model subject {
     name             String             @id @db.VarChar(255)
     exercise_subject exercise_subject[]
+}
+
+model classe {
+    name            String            @id @db.VarChar(255)
+    exercise_classe exercise_classe[]
+}
+
+model exercise_classe {
+    id            Int      @id @default(autoincrement())
+    exercise_path String   @db.VarChar(255)
+    classe_name   String   @db.VarChar(255)
+    classe        classe   @relation(fields: [classe_name], references: [name], onDelete: NoAction, onUpdate: NoAction)
+    exercise      exercise @relation(fields: [exercise_path], references: [path], onDelete: NoAction, onUpdate: NoAction)
 }

@@ -3,14 +3,10 @@ img.Image {
 }
 
 img {
-  max-width: 1000px;
+  max-width: 900px;
   width: 100%;
 }
 
 .MuiButtonBase-root {
   text-transform: none;
-}
-
-.css-15v22id-MuiAccordionDetails-root {
-  padding: 0%;
 }

@@ -15,17 +15,6 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 export default ({ setSelectedOptions }) => {
   const [options, setOptions] = React.useState({});
 
-  function change(attribute: string) {
-    return (_, selected: string[]) => {
-      setSelectedOptions((options: Record<string, string[]>) => {
-        if (selected.length != 0) {
-          options[attribute] = selected;
-        }
-        return options;
-      });
-    };
-  }
-
   React.useEffect(() => {
     (async () => {
       const data = await fetchJson(`/api/attributes`);
@@ -45,7 +34,12 @@ export default ({ setSelectedOptions }) => {
               stringify: translate,
             })}
             options={options[attribute] ?? []}
-            onChange={change(attribute)}
+            onChange={(_, selected: string[]) => {
+              setSelectedOptions((options: Record<string, string[]>) => {
+                options[attribute] = selected;
+                return options;
+              });
+            }}
             renderInput={(params) => (
               <TextField {...params} label={translate(attribute)} />
             )}

@@ -34,7 +34,9 @@ export default () => {
       </Typography>
 
       <Grid container mt={5}>
-        <Grid md={3.33} xs={12}>
+        <Grid md={0.33} xs={0}></Grid>
+
+        <Grid md={3} xs={12}>
           <Stack spacing={2} mb={3}>
             <Selects setSelectedOptions={setSelectedOptions} />
             <div style={{ textAlign: "center" }}>

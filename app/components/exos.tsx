@@ -48,7 +48,11 @@ export default ({ exos }) => {
                 ))}
               </Stack>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails
+              sx={{
+                p: 0,
+              }}
+            >
               <Exo exo={exo} />
             </AccordionDetails>
           </Accordion>
