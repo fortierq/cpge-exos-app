@@ -1,6 +1,6 @@
 services:
   node:
-    build: .
+    build: app
     command: "npx next start"
     ports:
       - 3000:3000
@@ -12,6 +12,8 @@ services:
       - .env
     depends_on:
       - db
+    logging:
+      driver: none
 
   db:
     image: postgres
@@ -22,3 +24,5 @@ services:
     volumes:
       - ./db:/docker-entrypoint-initdb.d
       # - ./data:/var/lib/postgresql/data
+    logging:
+      driver: none
